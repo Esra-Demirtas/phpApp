@@ -35,6 +35,25 @@ class Product extends CI_Controller
     }
 
     public function save(){
-        echo "saved";
+
+        $this->load->library("form_validation");
+        //Kurallar yazılır. Daha sonra form validation çalıştırılır. Başarılı ise kayıt işlemi başlar başarısız ise hata mesajı sayfada görünür.
+
+        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+
+        $this->form_validation->set_message(
+            array(
+                //required'a ait bir hata meydana geldiğinde ilgili mesajı verecek.
+                "required" => "{field} alanını doldurulmalıdır."
+            )
+        );
+
+        $validate = $this->form_validation->run();
+
+        if($validate){
+            echo "Kayıt işlemleri başlar";
+        }else{
+            echo validation_errors();
+        }
     }
 }
