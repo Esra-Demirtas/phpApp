@@ -26,6 +26,7 @@ class Product extends CI_Controller
     }
 
     public function new_form(){
+
         $viewData = new stdClass();
 
         $viewData->viewFolder = $this->viewFolder;
@@ -56,7 +57,7 @@ class Product extends CI_Controller
                 array(
                     "title"         => $this->input->post("title"),
                     "description"   => $this->input->post("description"),
-                    "url"           => "test",
+                    "url"           => convertToSEO($this->input->post("title")),
                     "rank"          => 0,
                     "isActive"      => 1,
                     "createdAt"     => date('Y-m-d H:i:s')
