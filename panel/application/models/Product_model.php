@@ -6,6 +6,10 @@ class Product_model extends CI_Model
         parent::__construct();
     }
 
+    public function get($where = array()){
+        return $this->db->where($where)->get($this->tableName)->row();
+    }
+
     /**Tüm kayıtları bana getirecek olan metod**/
     public function get_all(){
 

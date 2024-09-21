@@ -558,7 +558,7 @@
 	window.app.menubar.setTheme("dark");
 	window.app.menubar.applyTheme();
 
-	window.app.navbar.setTheme("warning");
+	window.app.navbar.setTheme("purple");
 	window.app.navbar.applyTheme();
 
 	window.app.saveSettings();

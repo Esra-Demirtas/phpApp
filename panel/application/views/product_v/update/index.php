@@ -4,7 +4,7 @@
     <?php $this->load->view("includes/head"); ?>
 </head>
 
-<body class="menubar-left menubar-unfold menubar-light theme-purple">
+<body class="menubar-left menubar-unfold menubar-light theme-primary">
 <!--============= start main area -->
 
     <!-- APP NAVBAR ==========-->
