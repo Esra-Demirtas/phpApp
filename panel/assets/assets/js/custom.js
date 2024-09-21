@@ -1,5 +1,5 @@
 $(document).ready(function (){
-    $(".remove-btn").click(function (e){
+    $(".remove-btn").click(function (){
 
         var $data_url = $(this).data("url");
 
@@ -14,15 +14,20 @@ $(document).ready(function (){
             cancelButtonText: "Hayır"
         }).then((result) => {
             if (result.isConfirmed) {
-
                 window.location.href = $data_url;
-
-                /*Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });*/
             }
         });
+    })
+
+    $(".isActive").change(function (){
+
+       var $data = $(this).prop("checked");
+       var $data_url = $(this).data("url");
+
+       if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+            $.post($data_url, { data : $data}, function (response){
+                alert(response);
+            });
+       }
     })
 })
