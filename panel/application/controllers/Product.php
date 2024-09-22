@@ -11,7 +11,8 @@ class Product extends CI_Controller
 
         $this->load->model("product_model");
     }
-    public function index(){
+    public function index()
+    {
         $viewData = new stdClass();
 
         /**Tablodan verilerin getirilmesi**/
@@ -26,7 +27,9 @@ class Product extends CI_Controller
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
-    public function new_form(){
+
+    public function new_form()
+    {
 
         $viewData = new stdClass();
 
@@ -37,7 +40,8 @@ class Product extends CI_Controller
 
     }
 
-    public function save(){
+    public function save()
+    {
 
         $this->load->library("form_validation");
         //Kurallar yazılır. Daha sonra form validation çalıştırılır. Başarılı ise kayıt işlemi başlar başarısız ise hata mesajı sayfada görünür.
@@ -82,7 +86,9 @@ class Product extends CI_Controller
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
     }
-    public function update_form($id){
+
+    public function update_form($id)
+    {
 
         $viewData = new stdClass();
 
@@ -101,7 +107,8 @@ class Product extends CI_Controller
 
     }
 
-    public function update($id){
+    public function update($id)
+    {
 
         $this->load->library("form_validation");
         //Kurallar yazılır. Daha sonra form validation çalıştırılır. Başarılı ise kayıt işlemi başlar başarısız ise hata mesajı sayfada görünür.
@@ -155,7 +162,8 @@ class Product extends CI_Controller
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $delete = $this->product_model->delete(
             array(
                 "id"    => $id
@@ -170,7 +178,8 @@ class Product extends CI_Controller
         }
     }
 
-    public function isActiveSetter($id){
+    public function isActiveSetter($id)
+    {
         if ($id){
             $isActive = ($this->input->post("data") === "true") ? 1 : 0;
 
@@ -185,7 +194,8 @@ class Product extends CI_Controller
         }
     }
 
-    public function rankSetter(){
+    public function rankSetter()
+    {
 
         $data = $this->input->post("data");
 
@@ -207,5 +217,16 @@ class Product extends CI_Controller
                 )
             );
         }
+    }
+
+    public function image_form($id)
+    {
+        $viewData = new stdClass();
+
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder =  "image";
+
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+
     }
 }

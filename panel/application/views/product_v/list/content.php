@@ -41,12 +41,13 @@
                                         type="checkbox"
                                         data-switchery
                                         data-color="#10c469"
-                                    <?php echo ($item->isActive) ? 'checked' : ''; ?>
+                                        <?php echo ($item->isActive) ? 'checked' : ''; ?>
                                 />
                             </td>
                             <td>
                                 <button data-url="<?php echo base_url("product/delete/$item->id"); ?>" type="button" class="btn btn-sm btn-danger btn-outline remove-btn"><i class="fa fa-trash"></i> Sil</button>
                                 <a href="<?php echo base_url("product/update_form/$item->id"); ?>" type="button" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
+                                <a href="<?php echo base_url("product/image_form/$item->id"); ?>" type="button" class="btn btn-sm btn-dark btn-outline"><i class="fa fa-image"></i> Resimler</a>
                             </td>
                         </tr>
                     <?php } ?>
