@@ -245,8 +245,11 @@ class Product extends CI_Controller
 
     public function image_upload($id){
 
+        $file_name = convertToSEO(pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+
         $config["allowed_types"] = "gif|jpg|png|jpeg";
         $config["upload_path"] = "uploads/$this->viewFolder/";
+        $config["file_name"] = $file_name;
 
         $this->load->library("upload", $config);
 
