@@ -12,7 +12,7 @@
         <th>Görsel</th>
         <th>Resim Adı</th>
         <th>Durumu</th>
-        <th>İşlem</th>
+        <th>Kapak</th>
         </thead>
         <tbody>
 
@@ -32,6 +32,16 @@
                         type="checkbox"
                         data-switchery
                         data-color="#10c469"
+                        <?php echo ($image->id) ? 'checked' : ''; ?>
+                    />
+                </td>
+                <td class="w100 text-center">
+                    <input
+                            data-url="<?php echo base_url("product/isActiveSetter/"); ?>"
+                            class="isActive"
+                            type="checkbox"
+                            data-switchery
+                            data-color="#ff5b5b"
                         <?php echo ($image->id) ? 'checked' : ''; ?>
                     />
                 </td>
