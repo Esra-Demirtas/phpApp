@@ -28,9 +28,7 @@ $(document).ready(function (){
        var $data_url = $(this).data("url");
 
        if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
-            $.post($data_url, { data : $data}, function (response){
-                alert(response);
-            });
+            $.post($data_url, { data : $data}, function (response){});
        }
     })
 
@@ -44,8 +42,13 @@ $(document).ready(function (){
 
     var uploadSection = Dropzone.forElement("#dropzone");
 
-    uploadSection.on("comlete", function (){
-        alert();
+    uploadSection.on("complete", function (file){
+
+        var $data_url = $("#dropzone").data("url");
+
+        $.post($data_url, {}, function (response){
+            $(".image_list_container").html(response);
+        });
     })
 
 })
