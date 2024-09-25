@@ -27,6 +27,7 @@
                     <th>İşlem</th>
                 </thead>
                 <tbody class="sortable" data-url="<?php echo base_url("product/rankSetter"); ?>">
+
                     <?php foreach ($items as $item) { ?>
                         <tr id="ord-<?php echo $item->id; ?>">
                             <td><i class="fa fa-reorder"></i></td>
@@ -51,6 +52,7 @@
                             </td>
                         </tr>
                     <?php } ?>
+
                 </tbody>
             </table>
             <?php } ?>

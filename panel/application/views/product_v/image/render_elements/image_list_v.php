@@ -8,17 +8,19 @@
 
     <table class="table table-striped table-bordered table-hover pictures_list">
         <thead>
+        <th><i class="fa fa-reorder"></i></th>
         <th>#id</th>
         <th>Görsel</th>
         <th>Resim Adı</th>
         <th>Durumu</th>
         <th>Kapak</th>
         </thead>
-        <tbody>
+        <tbody class="sortable" data-url="<?php echo base_url("product/imageRankSetter"); ?>">
 
         <?php foreach($item_images as $image) { ?>
 
-            <tr>
+            <tr id="ord-<?php echo $image->id; ?>">
+                <td><i class="fa fa-reorder"></i></td>
                 <td class="w100 text-center">#<?php echo $image->id; ?></td>
                 <td class="w100 text-center">
                     <img width="30" src="<?php echo base_url("uploads/" . $viewFolder . "/" . $image->img_url); ?>" alt="<?php echo $image->img_url; ?>" class="img-responsive">
