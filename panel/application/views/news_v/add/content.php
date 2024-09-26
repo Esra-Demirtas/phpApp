@@ -22,21 +22,23 @@
                     <div class="form-group">
                         <label for="control-demo-6" class="">Haber Türü</label>
                         <div id="control-demo-6" class="">
-                            <select class="form-control" name="news_type">
-                                <option value="iamge">Resim</option>
+                            <select class="form-control news_type_select" name="news_type">
+                                <option value="image">Resim</option>
                                 <option value="video">Video</option>
                             </select>
                         </div>
                     </div><!-- .form-group -->
-                    <div class="form-group">
+                    <div class="form-group image_upload_container">
                         <label>Görsel seçiniz</label>
                         <input type="file" name="img_url" class="form-control">
                     </div>
-                    <label>Video URL</label>
-                    <input class="form-control" placeholder="Video bağlantısını buraya yağıştırınız." name="video_url">
-                    <?php if (isset($form_error)) { ?>
-                        <small class="input-form-error"> <?php echo form_error("video_url"); ?></small>
-                    <?php } ?>
+                    <div class="form-group video_url_container">
+                        <label>Video URL</label>
+                        <input class="form-control" placeholder="Video bağlantısını buraya yağıştırınız." name="video_url">
+                        <?php if (isset($form_error)) { ?>
+                            <small class="input-form-error"> <?php echo form_error("video_url"); ?></small>
+                        <?php } ?>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Kaydet</button>
                     <a href="<?php echo base_url("news"); ?>" class="btn btn-md btn-danger btn-outline">İptal</a>
                 </form>
