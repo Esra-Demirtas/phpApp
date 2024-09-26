@@ -47,6 +47,32 @@ class News extends CI_Controller
         $this->load->library("form_validation");
         //Kurallar yazılır. Daha sonra form validation çalıştırılır. Başarılı ise kayıt işlemi başlar başarısız ise hata mesajı sayfada görünür.
 
+        $news_type = $this->input->post("news_type");
+
+        if ($news_type == "image"){
+
+            if ($_FILES["img_url"]["name"] == ""){
+
+                $alert = array(
+                    "title" => "İşlem Başarısız.",
+                    "text" => "Lütfen bir görsel seçiniz.",
+                    "type" => "error"
+                );
+
+                $this->session->set_flashdata("alert", $alert);
+
+                redirect(base_url("news/new_form"));
+
+                die();
+            }
+
+        } else if ($news_type == "video"){
+
+            echo "Video";
+
+        }
+
+        die();
         $this->form_validation->set_rules("title", "Başlık", "required|trim");
 
         $this->form_validation->set_message(
