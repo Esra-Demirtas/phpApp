@@ -22,7 +22,7 @@
                         <th class="w50">#id</th>
                         <th>Başlık</th>
                         <th>url</th>
-                        <th>Açıklama</th>
+                        <!--<th>Açıklama</th>-->
                         <th>Haber Türü</th>
                         <th>Görsel</th>
                         <th>Durumu</th>
@@ -41,7 +41,7 @@
                                 <td>
                                     <?php if ($item->news_type == "image") { ?>
 
-                                        <img width="100" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
+                                        <img width="75" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
                                         alt=""
                                         class="img-rounded"
                                         >
@@ -49,8 +49,8 @@
                                     <?php } else if ($item->news_type == "video") { ?>
 
                                         <iframe
-                                            width="100"
-                                            height="100"
+                                            width="75"
+                                            height="75"
                                             src="<?php echo $item->video_url; ?>"
                                             frameborder="0"
                                             gesture="media"
