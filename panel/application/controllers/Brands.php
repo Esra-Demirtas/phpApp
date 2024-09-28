@@ -47,8 +47,6 @@ class Brands extends CI_Controller
         $this->load->library("form_validation");
         //Kurallar yazılır. Daha sonra form validation çalıştırılır. Başarılı ise kayıt işlemi başlar başarısız ise hata mesajı sayfada görünür.
 
-        $references_type = $this->input->post("references_type");
-
         if ($_FILES["img_url"]["name"] == ""){
 
             $alert = array(
@@ -59,7 +57,7 @@ class Brands extends CI_Controller
 
             $this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("references/new_form"));
+            redirect(base_url("brands/new_form"));
 
             die();
         }
@@ -96,8 +94,6 @@ class Brands extends CI_Controller
                 $insert = $this->brand_model->add(
                     array(
                         "title"         => $this->input->post("title"),
-                        "description"   => $this->input->post("description"),
-                        "url"           => convertToSEO($this->input->post("title")),
                         "img_url"       => "$uploaded_file",
                         "rank"          => 0,
                         "isActive"      => 1,
@@ -132,14 +128,14 @@ class Brands extends CI_Controller
 
                 $this->session->set_flashdata("alert", $alert);
 
-                redirect(base_url("references/new_form"));
+                redirect(base_url("brands/new_form"));
 
             }
 
             //İşlemin sonucunu session a yazma işlemi
             $this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("references"));
+            redirect(base_url("brands"));
 
         }else{
 
@@ -226,7 +222,7 @@ class Brands extends CI_Controller
 
                     $this->session->set_flashdata("alert", $alert);
 
-                    redirect(base_url("references/update_form/$id"));
+                    redirect(base_url("brands/update_form/$id"));
 
                     die();
 
@@ -267,7 +263,7 @@ class Brands extends CI_Controller
             //İşlemin sonucunu session a yazma işlemi
             $this->session->set_flashdata("alert", $alert);
 
-            redirect(base_url("references"));
+            redirect(base_url("brands"));
 
         }else{
 
@@ -312,7 +308,7 @@ class Brands extends CI_Controller
 
         $this->session->set_flashdata("alert", $alert);
 
-        redirect(base_url("references"));
+        redirect(base_url("brands"));
     }
 
     public function isActiveSetter($id)
