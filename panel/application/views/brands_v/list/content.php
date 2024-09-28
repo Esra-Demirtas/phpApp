@@ -32,11 +32,11 @@
                                 <td class="order"><i class="fa fa-reorder"></i></td>
                                 <td class="w50 text-center">#<?php echo $item->id; ?></td>
                                 <td><?php echo $item->title; ?></td>
-                                <td class="text-center">
+                                <td class="text-center w100">
                                     <img width="75" src="<?php echo base_url("uploads/$viewFolder/$item->img_url"); ?>"
                                          alt="" class="img-rounded">
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center w100">
                                     <input
                                             data-url="<?php echo base_url("brands/isActiveSetter/$item->id"); ?>"
                                             class="isActive"
@@ -46,7 +46,7 @@
                                             <?php echo ($item->isActive) ? 'checked' : ''; ?>
                                     />
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center w200">
                                     <button data-url="<?php echo base_url("brands/delete/$item->id"); ?>" type="button" class="btn btn-sm btn-danger btn-outline remove-btn"><i class="fa fa-trash"></i> Sil</button>
                                     <a href="<?php echo base_url("brands/update_form/$item->id"); ?>" type="button" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
                                 </td>
