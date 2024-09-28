@@ -47,7 +47,6 @@ class Courses extends CI_Controller
         $this->load->library("form_validation");
         //Kurallar yazılır. Daha sonra form validation çalıştırılır. Başarılı ise kayıt işlemi başlar başarısız ise hata mesajı sayfada görünür.
 
-        $courses_type = $this->input->post("courses_type");
 
         if ($_FILES["img_url"]["name"] == ""){
 
@@ -64,7 +63,7 @@ class Courses extends CI_Controller
             die();
         }
 
-        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+        $this->form_validation->set_rules("event_date", "Eğitim Tarihi", "required|trim");
 
         $this->form_validation->set_message(
             array(
@@ -99,6 +98,7 @@ class Courses extends CI_Controller
                         "description"   => $this->input->post("description"),
                         "url"           => convertToSEO($this->input->post("title")),
                         "img_url"       => "$uploaded_file",
+                        "event_date"    => $this->input->post("event_date"),
                         "rank"          => 0,
                         "isActive"      => 1,
                         "createdAt"     => date('Y-m-d H:i:s')
