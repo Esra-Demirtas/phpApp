@@ -6,7 +6,9 @@ class Courses extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
+        if (empty($this->session->userdata('user'))) {
+            redirect(base_url("login"));
+        }
         $this->viewFolder = "courses_v";
 
         $this->load->model("course_model");

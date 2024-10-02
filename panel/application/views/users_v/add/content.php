@@ -1,29 +1,41 @@
 <div class="row">
     <div class="col-md-12">
         <h4 class="m-b-lg">
-            Yeni Referans Ekle
+            Yeni Kullanıcı Ekle
         </h4>
     </div>
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-body">
-                <form action="<?php echo base_url("users/save"); ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo base_url("users/save"); ?>" method="post">
                     <div class="form-group">
-                        <label>Başlık</label>
-                        <input class="form-control" placeholder="Başlık" name="title">
+                        <label>Kullanıcı Adı</label>
+                        <input class="form-control" placeholder="Kullanıcı Adı" name="user_name">
                         <?php if (isset($form_error)) { ?>
-                            <small class="input-form-error"> <?php echo form_error("title"); ?></small>
+                            <small class="input-form-error"> <?php echo form_error("user_name"); ?></small>
                         <?php } ?>
                     </div>
                     <div class="form-group">
-                        <label>Açıklama</label>
-                        <textarea name="descripton" class="m-0" data-plugin="summernote" data-options="{height: 250}"></textarea>
+                        <label>Ad Soyad</label>
+                        <input class="form-control" placeholder="Ad Soyad" name="full_name">
+                        <?php if (isset($form_error)) { ?>
+                            <small class="input-form-error"> <?php echo form_error("full_name"); ?></small>
+                        <?php } ?>
                     </div>
-                    <div class="form-group image_upload_container">
-                        <label>Görsel seçiniz</label>
-                        <input type="file" name="img_url" class="form-control">
+                    <div class="form-group">
+                        <label>E-posta</label>
+                        <input class="form-control" type="email" placeholder="E-posta" name="email">
+                        <?php if (isset($form_error)) { ?>
+                            <small class="input-form-error"> <?php echo form_error("email"); ?></small>
+                        <?php } ?>
                     </div>
-
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input class="form-control" type="password" placeholder="Şifre" name="password">
+                        <?php if (isset($form_error)) { ?>
+                            <small class="input-form-error"> <?php echo form_error("password"); ?></small>
+                        <?php } ?>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Kaydet</button>
                     <a href="<?php echo base_url("users"); ?>" class="btn btn-md btn-danger btn-outline">İptal</a>
                 </form>

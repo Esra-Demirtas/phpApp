@@ -1,17 +1,13 @@
 <?php
 
-class Users extends CI_Controller
+class Login extends CI_Controller
 {
     public  $viewFolder = "";
     public function __construct()
     {
         parent::__construct();
 
-        if (empty($this->session->userdata('user'))) {
-            redirect(base_url("login"));
-        }
-
-        $this->viewFolder = "users_v";
+        $this->viewFolder = "login_v";
 
         $this->load->model("user_model");
 
@@ -19,18 +15,8 @@ class Users extends CI_Controller
     public function index()
     {
         $viewData = new stdClass();
-
-        /**Tablodan verilerin getirilmesi**/
-        $items = $this->user_model->get_all(
-            array()
-        );
-
-        /**View'e gönderilecek değişkenlerin set edilmesi**/
         $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder =  "list";
-        $viewData->items = $items;
-
-        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+        $this->load->view("{$viewData->viewFolder}/index", $viewData);
     }
 
     public function new_form()
@@ -43,6 +29,61 @@ class Users extends CI_Controller
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
+    }
+
+    public function loginForm()
+    {
+        $getData = $this->user_model->get(
+            array(
+                "email"             => $this->input->post("email"),
+                "password"          => md5($this->input->post("password")),
+            )
+        );
+
+        if ($getData){
+            //Kullanıcı şifresi ve epostası doğru
+            $insert = $this->session->set_userdata("user", $getData);
+            if($insert){
+
+                $alert = array(
+                    "title" => "İşlem Başarılıdır.",
+                    "text" => "Kullanıcı Girişi başarılı şekilde yapıldı.",
+                    "type" => "success"
+                );
+
+            }else{
+
+                $alert = array(
+                    "title" => "İşlem Başarısızdır.",
+                    "text" => "Kullanıcı girişi başarısız.",
+                    "type" => "error"
+                );
+            }
+            $this->session->set_flashdata("alert", $alert);
+            redirect(base_url(""));
+        }else{
+            //Kullanıcı bulunamadı dönecek
+
+            $alert = array(
+                "title" => "İşlem Başarısızdır.",
+                "text" => "Kullanıcı girişi başarısız.",
+                "type" => "error"
+            );
+            $this->session->set_flashdata("alert", $alert);
+            redirect(base_url("Login"));
+        }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata("user");
+        $alert = array(
+            "title" => "İşlem Başarısızdır.",
+            "text" => "Kullanıcı girişi başarısız.",
+            "type" => "error"
+        );
+        $this->session->set_flashdata("alert", $alert);
+        redirect(base_url("Login"));
     }
 
     public function save()
@@ -66,7 +107,6 @@ class Users extends CI_Controller
 
         if($validate) {
 
-            //upload süreci
             $insert = $this->user_model->add(
                 array(
                     "user_name"         => $this->input->post("user_name"),
@@ -110,6 +150,8 @@ class Users extends CI_Controller
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
     }
+
+  
 
     public function delete($id)
     {

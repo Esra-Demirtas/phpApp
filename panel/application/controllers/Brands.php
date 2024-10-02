@@ -7,6 +7,10 @@ class Brands extends CI_Controller
     {
         parent::__construct();
 
+        if (empty($this->session->userdata('user'))) {
+            redirect(base_url("login"));
+        }
+
         $this->viewFolder = "brands_v";
 
         $this->load->model("brand_model");
